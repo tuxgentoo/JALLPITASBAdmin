@@ -1,0 +1,63 @@
+﻿@model JALLPITASBAdmin.Models.Carpeta
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Carpeta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IDCarpeta" class="control-label"></label>
+                <input asp-for="IDCarpeta" class="form-control" />
+                <span asp-validation-for="IDCarpeta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgrupacionSocial" class="control-label"></label>
+                <input asp-for="AgrupacionSocial" class="form-control" />
+                <span asp-validation-for="AgrupacionSocial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cuerpos" class="control-label"></label>
+                <input asp-for="Cuerpos" class="form-control" />
+                <span asp-validation-for="Cuerpos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fojas" class="control-label"></label>
+                <input asp-for="Fojas" class="form-control" />
+                <span asp-validation-for="Fojas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Poligono" class="control-label"></label>
+                <input asp-for="Poligono" class="form-control" />
+                <span asp-validation-for="Poligono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaRegistro" class="control-label"></label>
+                <input asp-for="FechaRegistro" class="form-control" />
+                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
