@@ -32,13 +32,13 @@ namespace JALLPITASBAdmin.Models
         public DateTime FechaRegistro { get; set; }
         public string Observaciones { get; set; }
         //public List<Predio> Predios { get; set; }
-        [Required]
-        [ForeignKey("Departamento")]
+        //[Required]
+        //[ForeignKey("Departamento")]
         //public int DepartamentoId { get; set; }
         //public Departamento Departamento { get; set; }
         //[ForeignKey("Provincia")]
-        [BindRequired]
-        public int? ProvinciaId { get; set; }
+        //[BindRequired]
+        //public int? ProvinciaId { get; set; }
         //[Required]        
         //public Provincia Provincia { get; set; }
         //[ForeignKey("Municipio")]
@@ -50,13 +50,13 @@ namespace JALLPITASBAdmin.Models
         //[ForeignKey("Ubicacion")]
         //public int UbicacionId { get; set; }
         //public Ubicacion Ubicacion { get; set; }
-        [BindRequired]
-        [NotMapped]
-        public int EstadoId { get; set; }
-        [NotMapped]
-        public string UserId { get; set; }
-        [NotMapped]
-        public int UbicacionId { get; set; }
+        //[BindRequired]
+        //[NotMapped]
+        //public int EstadoId { get; set; }
+        //[NotMapped]
+        //public string UserId { get; set; }
+        //[NotMapped]
+        //public int UbicacionId { get; set; }
         //public ICollection<EstadoCarpeta> EstadoCarpetas { get; set; }     
         //public IList<CarpetaEstado> EstadoCarpetas { get; set; }
         //public IList<CarpetaApplicationUser> CarpetaApplicationUsers { get; set; }
