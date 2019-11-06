@@ -32,10 +32,10 @@ namespace JALLPITASBAdmin.Models
         public DateTime FechaRegistro { get; set; }
         public string Observaciones { get; set; }
         //public List<Predio> Predios { get; set; }
-        //[Required]
-        //[ForeignKey("Departamento")]
-        //public int DepartamentoId { get; set; }
-        //public Departamento Departamento { get; set; }
+        [Required]
+        [ForeignKey("Departamento")]
+        public int DepartamentoId { get; set; }
+        public Departamento Departamento { get; set; }
         //[ForeignKey("Provincia")]
         //[BindRequired]
         //public int? ProvinciaId { get; set; }

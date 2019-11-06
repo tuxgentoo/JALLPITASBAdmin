@@ -19,7 +19,7 @@ namespace JALLPITASBAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Carpeta.ToListAsync());
+            return View(await _context.Carpetas.ToListAsync());
         }
 
         public IActionResult Privacy()

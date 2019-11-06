@@ -13,6 +13,7 @@ namespace JALLPITASBAdmin.Data
             : base(options)
         {
         }
-        public DbSet<JALLPITASBAdmin.Models.Carpeta> Carpeta { get; set; }
+        public DbSet<JALLPITASBAdmin.Models.Carpeta> Carpetas { get; set; }
+        public DbSet<JALLPITASBAdmin.Models.Departamento> Departamentos { get; set; }
     }
 }

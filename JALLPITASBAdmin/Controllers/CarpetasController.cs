@@ -22,7 +22,7 @@ namespace JALLPITASBAdmin.Controllers
         // GET: Carpetas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Carpeta.ToListAsync());
+            return View(await _context.Carpetas.ToListAsync());
         }
 
         // GET: Carpetas/Details/5
@@ -33,7 +33,7 @@ namespace JALLPITASBAdmin.Controllers
                 return NotFound();
             }
 
-            var carpeta = await _context.Carpeta
+            var carpeta = await _context.Carpetas
                 .FirstOrDefaultAsync(m => m.CarpetaId == id);
             if (carpeta == null)
             {
@@ -46,6 +46,7 @@ namespace JALLPITASBAdmin.Controllers
         // GET: Carpetas/Create
         public IActionResult Create()
         {
+            ViewData["DepartamentoId"] = new SelectList(_context.Departamentos, "DepartamentoId", "Nombre");
             return View();
         }
 
@@ -74,7 +75,7 @@ namespace JALLPITASBAdmin.Controllers
                 return NotFound();
             }
 
-            var carpeta = await _context.Carpeta.FindAsync(id);
+            var carpeta = await _context.Carpetas.FindAsync(id);
             if (carpeta == null)
             {
                 return NotFound();
@@ -125,7 +126,7 @@ namespace JALLPITASBAdmin.Controllers
                 return NotFound();
             }
 
-            var carpeta = await _context.Carpeta
+            var carpeta = await _context.Carpetas
                 .FirstOrDefaultAsync(m => m.CarpetaId == id);
             if (carpeta == null)
             {
@@ -140,15 +141,15 @@ namespace JALLPITASBAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var carpeta = await _context.Carpeta.FindAsync(id);
-            _context.Carpeta.Remove(carpeta);
+            var carpeta = await _context.Carpetas.FindAsync(id);
+            _context.Carpetas.Remove(carpeta);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CarpetaExists(int id)
         {
-            return _context.Carpeta.Any(e => e.CarpetaId == id);
+            return _context.Carpetas.Any(e => e.CarpetaId == id);
         }
     }
 }

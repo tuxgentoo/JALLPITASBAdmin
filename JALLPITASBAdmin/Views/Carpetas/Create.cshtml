@@ -145,9 +145,9 @@
                                 <span asp-validation-for="IDCarpeta" class="text-danger"></span>
                             </div>
                             @*<div class="col-sm-6">
-                                <input asp-for="FechaRegistro" type="date" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Fecha">
-                                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
-                            </div>*@
+                <input asp-for="FechaRegistro" type="date" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Fecha">
+                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+            </div>*@
                         </div>
                         <div class="form-group">
                             <input asp-for="AgrupacionSocial" type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Agrupacion Social">
@@ -167,6 +167,27 @@
                                 <span asp-validation-for="Poligono" class="text-danger"></span>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <select asp-for="DepartamentoId" type="number" class="form-control form-control-user
+                                        " asp-items="ViewBag.DepartamentoId" id="exampleLastName" placeholder="Departamento">
+                                    </select>
+                                <span asp-validation-for="Cuerpos" class="text-danger"></span>
+                            </div>
+
+                            @*<select asp-for="DepartamentoId" class="form-control" asp-items="ViewBag.DepartamentoId" required>
+                                <option selected="selected" value="" disabled>--Por favor seleccione el departamento--</option>
+                            </select>*@
+
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                <input asp-for="Fojas" type="number" class="form-control form-control-user" id="exampleInputPassword" placeholder="Provincia">
+                                <span asp-validation-for="Fojas" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-4">
+                                <input asp-for="Poligono" type="number" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Municipio">
+                                <span asp-validation-for="Poligono" class="text-danger"></span>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <input asp-for="Observaciones" type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Observaciones">
                             <span asp-validation-for="Observaciones" class="text-danger"></span>
@@ -183,8 +204,8 @@
                             <i class="fab fa-google fa-fw"></i> Volver a la Lista
                         </a>
                         @*<div>
-                            <a asp-action="Index">Back to List</a>
-                        </div>*@
+            <a asp-action="Index">Back to List</a>
+        </div>*@
                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                             <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                         </a>
