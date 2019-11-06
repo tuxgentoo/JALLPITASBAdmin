@@ -58,6 +58,7 @@ namespace JALLPITASBAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
+                carpeta.FechaRegistro = DateTime.Now;
                 _context.Add(carpeta);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

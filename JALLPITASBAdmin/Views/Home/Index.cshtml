@@ -16,7 +16,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Registro de procesos</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                     </div>
                     <div class="col-auto">
@@ -33,7 +33,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Procesos en conflicto</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                     </div>
                     <div class="col-auto">
@@ -50,7 +50,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Remitidos a titulacion</div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
@@ -76,7 +76,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a asp-action="Index">Pendiente por recepcionar</a></div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                     </div>
                     <div class="col-auto">
@@ -122,7 +122,7 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.IDCarpeta)
+                                <a asp-controller="Carpetas" asp-action="Edit" asp-route-id="@item.CarpetaId">@Html.DisplayFor(modelItem => item.IDCarpeta)</a>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.AgrupacionSocial)
@@ -352,3 +352,4 @@
             <h1 class="display-4">Welcome</h1>
             <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
         </div>*@
+</div>
