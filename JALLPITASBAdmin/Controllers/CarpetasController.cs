@@ -55,7 +55,7 @@ namespace JALLPITASBAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CarpetaId,IDCarpeta,AgrupacionSocial,Cuerpos,Fojas,Poligono,FechaRegistro,Observaciones")] Carpeta carpeta)
+        public async Task<IActionResult> Create([Bind("CarpetaId,IDCarpeta,DepartamentoId,AgrupacionSocial,Cuerpos,Fojas,Poligono,FechaRegistro,Observaciones")] Carpeta carpeta)
         {
             if (ModelState.IsValid)
             {
