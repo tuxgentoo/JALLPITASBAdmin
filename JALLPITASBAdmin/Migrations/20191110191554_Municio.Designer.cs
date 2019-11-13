@@ -3,15 +3,17 @@ using System;
 using JALLPITASBAdmin.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace JALLPITASBAdmin.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191110191554_Municio")]
+    partial class Municio
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,22 +101,13 @@ namespace JALLPITASBAdmin.Migrations
 
                     b.Property<long>("IDCarpeta");
 
-                    b.Property<int?>("MunicipioId");
-
                     b.Property<string>("Observaciones");
 
                     b.Property<int>("Poligono");
 
-                    b.Property<int?>("ProvinciaId")
-                        .IsRequired();
-
                     b.HasKey("CarpetaId");
 
                     b.HasIndex("DepartamentoId");
-
-                    b.HasIndex("MunicipioId");
-
-                    b.HasIndex("ProvinciaId");
 
                     b.ToTable("Carpetas");
                 });
@@ -130,40 +123,6 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasKey("DepartamentoId");
 
                     b.ToTable("Departamentos");
-                });
-
-            modelBuilder.Entity("JALLPITASBAdmin.Models.Municipio", b =>
-                {
-                    b.Property<int>("MunicipioId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Nombre")
-                        .IsRequired();
-
-                    b.Property<int>("ProvinciaId");
-
-                    b.HasKey("MunicipioId");
-
-                    b.HasIndex("ProvinciaId");
-
-                    b.ToTable("Municipios");
-                });
-
-            modelBuilder.Entity("JALLPITASBAdmin.Models.Provincia", b =>
-                {
-                    b.Property<int>("ProvinciaId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("DepartamentoId");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired();
-
-                    b.HasKey("ProvinciaId");
-
-                    b.HasIndex("DepartamentoId");
-
-                    b.ToTable("Provincias");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -281,31 +240,6 @@ namespace JALLPITASBAdmin.Migrations
                 {
                     b.HasOne("JALLPITASBAdmin.Models.Departamento", "Departamento")
                         .WithMany("Carpetas")
-                        .HasForeignKey("DepartamentoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("JALLPITASBAdmin.Models.Municipio", "Municipio")
-                        .WithMany("Carpetas")
-                        .HasForeignKey("MunicipioId");
-
-                    b.HasOne("JALLPITASBAdmin.Models.Provincia", "Provincia")
-                        .WithMany("Carpetas")
-                        .HasForeignKey("ProvinciaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("JALLPITASBAdmin.Models.Municipio", b =>
-                {
-                    b.HasOne("JALLPITASBAdmin.Models.Provincia", "Provincia")
-                        .WithMany("Municipios")
-                        .HasForeignKey("ProvinciaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("JALLPITASBAdmin.Models.Provincia", b =>
-                {
-                    b.HasOne("JALLPITASBAdmin.Models.Departamento", "Departamento")
-                        .WithMany("Provincias")
                         .HasForeignKey("DepartamentoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

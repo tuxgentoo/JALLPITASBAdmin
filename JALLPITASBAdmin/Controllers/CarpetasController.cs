@@ -151,5 +151,27 @@ namespace JALLPITASBAdmin.Controllers
         {
             return _context.Carpetas.Any(e => e.CarpetaId == id);
         }
+
+        //<Script>
+        //Obtener todos las provincias de un Departamento
+        public JsonResult GetProvinciabyid(int id)
+        {
+            List<Provincia> provincias = new List<Provincia>();
+            provincias = _context.Provincias.Where(De => De.Departamento.DepartamentoId == id).ToList();
+            //list.Insert(0, new Provincia { ProvinciaId = 0, Nombre = "Por favor Seleccione la Provincias" });
+            return Json(new SelectList(provincias, "ProvinciaId", "Nombre"));
+        }
+        //</Script>
+
+        //<Script>
+        //Obtener todos los municipios de una Provincia
+        public JsonResult GetMunicipiobyid(int id)
+        {
+            List<Municipio> municipios = new List<Municipio>();
+            municipios = _context.Municipios.Where(Pro => Pro.Provincia.ProvinciaId == id).ToList();
+            //list.Insert(0, new Municipio { MunicipioId = 0, Nombre = "Por favor Seleccione el Municipios" });
+            return Json(new SelectList(municipios, "MunicipioId", "Nombre"));
+        }
+        //</Script>
     }
 }

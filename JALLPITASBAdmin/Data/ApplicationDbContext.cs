@@ -15,5 +15,7 @@ namespace JALLPITASBAdmin.Data
         }
         public DbSet<JALLPITASBAdmin.Models.Carpeta> Carpetas { get; set; }
         public DbSet<JALLPITASBAdmin.Models.Departamento> Departamentos { get; set; }
+        public DbSet<JALLPITASBAdmin.Models.Provincia> Provincias { get; set; }
+        public DbSet<JALLPITASBAdmin.Models.Municipio> Municipios { get; set; }
     }
 }

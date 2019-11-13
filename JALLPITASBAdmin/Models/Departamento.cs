@@ -13,6 +13,6 @@ namespace JALLPITASBAdmin.Models
         [Required]
         public string Nombre { get; set; }
         public ICollection<Carpeta> Carpetas { get; set; }
-        //public ICollection<Provincia> Provincias { get; set; }
+        public ICollection<Provincia> Provincias { get; set; }
     }
 }
