@@ -8,6 +8,10 @@ namespace JALLPITASBAdmin.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser() : base()
+        {
+                
+        }
         public int Ci { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
