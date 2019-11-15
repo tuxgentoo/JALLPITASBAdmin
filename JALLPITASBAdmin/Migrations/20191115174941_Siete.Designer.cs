@@ -3,15 +3,17 @@ using System;
 using JALLPITASBAdmin.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace JALLPITASBAdmin.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191115174941_Siete")]
+    partial class Siete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,7 +134,7 @@ namespace JALLPITASBAdmin.Migrations
 
                     b.Property<int>("Poligono");
 
-                    b.Property<int>("ProvinciaId");
+                    b.Property<int?>("ProvinciaId");
 
                     b.HasKey("CarpetaId");
 
@@ -291,10 +293,9 @@ namespace JALLPITASBAdmin.Migrations
                         .WithMany("Carpetas")
                         .HasForeignKey("MunicipioId");
 
-                    b.HasOne("JALLPITASBAdmin.Models.Provincia", "Provincia")
+                    b.HasOne("JALLPITASBAdmin.Models.Provincia")
                         .WithMany("Carpetas")
-                        .HasForeignKey("ProvinciaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ProvinciaId");
                 });
 
             modelBuilder.Entity("JALLPITASBAdmin.Models.Municipio", b =>

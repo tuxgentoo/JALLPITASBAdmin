@@ -18,10 +18,10 @@
                     @*<div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                         </div>*@
-                    <form class="user needs-validation" novalidate" asp-action="Create">
+                    <form class="user needs-validation" novalidate asp-action="Create">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input asp-for="IDCarpeta" type="number" class="form-control form-control-user" id="exampleFirstName" placeholder="ID Carpeta" required>
+                                <input asp-for="IDCarpeta" type="number" class="form-control form-control-user" placeholder="ID Carpeta" required>
                                 @*<span asp-validation-for="IDCarpeta" class="text-danger"></span>*@
                                 @*<div class="invalid-tooltip">
                                         Looks good!
@@ -29,45 +29,43 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input asp-for="AgrupacionSocial" type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Agrupacion Social" required>
+                            <input asp-for="AgrupacionSocial" type="text" class="form-control form-control-user" placeholder="Agrupacion Social" required>
                             @*<span asp-validation-for="AgrupacionSocial" class="text-danger"></span>*@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-4">
-                                <input asp-for="Cuerpos" type="number" class="form-control form-control-user" id="exampleLastName" placeholder="Cuerpos" required>
+                                <input asp-for="Cuerpos" type="number" class="form-control form-control-user" placeholder="Cuerpos" required>
                                 @*<span asp-validation-for="Cuerpos" class="text-danger"></span>*@
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0">
-                                <input asp-for="Fojas" type="number" class="form-control form-control-user" id="exampleInputPassword" placeholder="Fojas" required>
+                                <input asp-for="Fojas" type="number" class="form-control form-control-user" placeholder="Fojas" required>
                                 @*<span asp-validation-for="Fojas" class="text-danger"></span>*@
                             </div>
                             <div class="col-sm-4">
-                                <input asp-for="Poligono" type="number" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Poligono" required>
+                                <input asp-for="Poligono" type="number" class="form-control form-control-user" placeholder="Poligono" required>
                                 @*<span asp-validation-for="Poligono" class="text-danger"></span>*@
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-4">
-                                <select asp-for="DepartamentoId" type="text" class="form-control form-control-range" asp-items="ViewBag.DepartamentoId" placeholder="Departamento" required>
+                                <select asp-for="DepartamentoId" class="form-control" asp-items="ViewBag.DepartamentoId" placeholder="Departamento" required>
                                     <option selected="selected" value="" disabled>--Seleccione un departamento--</option>
                                 </select>
-                                @*<span asp-validation-for="Cuerpos" class="text-danger"></span>*@
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0">
-                                <select asp-for="ProvinciaId" type="text" class="form-control form-control-range" asp-items="ViewBag.ProvinciaId" placeholder="Provincia" required>
+                                <select asp-for="ProvinciaId" class="form-control" asp-items="ViewBag.ProvinciaId" required>
                                     <option selected="selected" value="" disabled>--Seleccione la provincia--</option>
                                 </select>
-                                @*<span asp-validation-for="Fojas" class="text-danger"></span>*@
-                            </div>                            
-                            <div class="col-sm-4">
-                                <select asp-for="MunicipioId" type="text" class="form-control form-control-range" asp-items="ViewBag.MunicipioId" placeholder="Municipio" required>
-                                    <option selected="selected" value="" disabled>--Seleccione el municipio--</option>
-                                </select>
-                                @*<span asp-validation-for="Poligono" class="text-danger"></span>*@
                             </div>
+                            @*<div class="col-sm-4">
+            <select asp-for="MunicipioId" class="form-control form-control-range" asp-items="ViewBag.MunicipioId" placeholder="Municipio" required>
+                <option selected="selected" value="" disabled>--Seleccione el municipio--</option>
+            </select>
+            <span asp-validation-for="Poligono" class="text-danger"></span>
+        </div>*@
                         </div>
                         <div class="form-group">
-                            <input asp-for="Observaciones" type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Observaciones">
+                            <input asp-for="Observaciones" type="text" class="form-control form-control-user" placeholder="Observaciones">
                             @*<span asp-validation-for="Observaciones" class="text-danger"></span>*@
                         </div>
 

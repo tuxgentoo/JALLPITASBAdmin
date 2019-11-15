@@ -3,15 +3,17 @@ using System;
 using JALLPITASBAdmin.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace JALLPITASBAdmin.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191115173110_Seis")]
+    partial class Seis
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,15 +134,11 @@ namespace JALLPITASBAdmin.Migrations
 
                     b.Property<int>("Poligono");
 
-                    b.Property<int>("ProvinciaId");
-
                     b.HasKey("CarpetaId");
 
                     b.HasIndex("DepartamentoId");
 
                     b.HasIndex("MunicipioId");
-
-                    b.HasIndex("ProvinciaId");
 
                     b.ToTable("Carpetas");
                 });
@@ -290,11 +288,6 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasOne("JALLPITASBAdmin.Models.Municipio")
                         .WithMany("Carpetas")
                         .HasForeignKey("MunicipioId");
-
-                    b.HasOne("JALLPITASBAdmin.Models.Provincia", "Provincia")
-                        .WithMany("Carpetas")
-                        .HasForeignKey("ProvinciaId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("JALLPITASBAdmin.Models.Municipio", b =>

@@ -39,11 +39,11 @@ namespace JALLPITASBAdmin.Models
         [ForeignKey("Provincia")]
         [BindRequired]
         public int? ProvinciaId { get; set; }
-        [Required]        
+        [Required]
         public Provincia Provincia { get; set; }
-        [ForeignKey("Municipio")]
-        public int? MunicipioId { get; set; }
-        public Municipio Municipio { get; set; }
+        //[ForeignKey("Municipio")]
+        //public int? MunicipioId { get; set; }
+        //public Municipio Municipio { get; set; }
         //[ForeignKey("ApplicationUser")]
         //public string UserId { get; set; }
         //public ApplicationUser ApplicationUser { get; set; }

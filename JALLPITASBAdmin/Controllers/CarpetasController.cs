@@ -55,8 +55,13 @@ namespace JALLPITASBAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CarpetaId,IDCarpeta,DepartamentoId,AgrupacionSocial,Cuerpos,Fojas,Poligono,FechaRegistro,Observaciones")] Carpeta carpeta)
+        public async Task<IActionResult> Create([Bind("CarpetaId,IDCarpeta,DepartamentoId,ProvinciaId,AgrupacionSocial,Cuerpos,Fojas,Poligono,Observaciones")] Carpeta carpeta)
         {
+            var errors = ModelState
+    .Where(x => x.Value.Errors.Count > 0)
+    .Select(x => new { x.Key, x.Value.Errors })
+    .ToArray();
+                        
             if (ModelState.IsValid)
             {
                 carpeta.FechaRegistro = DateTime.Now;
