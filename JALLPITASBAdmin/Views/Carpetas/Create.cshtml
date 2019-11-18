@@ -4,98 +4,128 @@
     ViewData["Title"] = "Create";
 }
 
-<div class="card shadow mb-4">
-    <div class="card-header py-3 bg-gradient-primary">
-        <h6 class="m-0 font-weight-bold text-white">Registro de procesos</h6>
-    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-gradient-primary">
+            <h6 class="m-0 font-weight-bold text-white">Registro de procesos</h6>
+        </div>
 
-    <div class="card-body p-0">
-        <!-- Nested Row within Card Body -->
-        <div class="row">
-            @*<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>*@
-            <div class="col-lg-12">
-                <div class="p-5">
-                    @*<div class="text-center">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                @*<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>*@
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        @*<div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                         </div>*@
-                    <form class="user needs-validation" novalidate asp-action="Create">
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input asp-for="IDCarpeta" type="number" class="form-control form-control-user" placeholder="ID Carpeta" required>
-                                @*<span asp-validation-for="IDCarpeta" class="text-danger"></span>*@
-                                @*<div class="invalid-tooltip">
+                        <form class="user needs-validation" novalidate asp-action="Create">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input asp-for="IDCarpeta" type="number" class="form-control form-control-user" placeholder="ID Carpeta" required>
+                                    @*<span asp-validation-for="IDCarpeta" class="text-danger"></span>*@
+                                    @*<div class="invalid-tooltip">
                                         Looks good!
                                     </div>*@
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="AgrupacionSocial" type="text" class="form-control form-control-user" placeholder="Agrupacion Social" required>
-                            @*<span asp-validation-for="AgrupacionSocial" class="text-danger"></span>*@
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <input asp-for="Cuerpos" type="number" class="form-control form-control-user" placeholder="Cuerpos" required>
-                                @*<span asp-validation-for="Cuerpos" class="text-danger"></span>*@
+                            <div class="form-group">
+                                <input asp-for="AgrupacionSocial" type="text" class="form-control form-control-user" placeholder="Agrupacion Social" required>
+                                @*<span asp-validation-for="AgrupacionSocial" class="text-danger"></span>*@
                             </div>
-                            <div class="col-sm-4 mb-3 mb-sm-0">
-                                <input asp-for="Fojas" type="number" class="form-control form-control-user" placeholder="Fojas" required>
-                                @*<span asp-validation-for="Fojas" class="text-danger"></span>*@
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <input asp-for="Cuerpos" type="number" class="form-control form-control-user" placeholder="Cuerpos" required>
+                                    @*<span asp-validation-for="Cuerpos" class="text-danger"></span>*@
+                                </div>
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <input asp-for="Fojas" type="number" class="form-control form-control-user" placeholder="Fojas" required>
+                                    @*<span asp-validation-for="Fojas" class="text-danger"></span>*@
+                                </div>
+                                <div class="col-sm-4">
+                                    <input asp-for="Poligono" type="number" class="form-control form-control-user" placeholder="Poligono" required>
+                                    @*<span asp-validation-for="Poligono" class="text-danger"></span>*@
+                                </div>
                             </div>
-                            <div class="col-sm-4">
-                                <input asp-for="Poligono" type="number" class="form-control form-control-user" placeholder="Poligono" required>
-                                @*<span asp-validation-for="Poligono" class="text-danger"></span>*@
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <select asp-for="DepartamentoId" class="form-control" asp-items="ViewBag.DepartamentoId" placeholder="Departamento" required>
+                                        <option selected="selected" value="" disabled>--Seleccione un departamento--</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <select asp-for="ProvinciaId" class="form-control" asp-items="ViewBag.ProvinciaId" required>
+                                        <option selected="selected" value="" disabled>--Seleccione la provincia--</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select asp-for="MunicipioId" class="form-control form-control-range" asp-items="ViewBag.MunicipioId" placeholder="Municipio" required>
+                                        <option selected="selected" value="" disabled>--Seleccione el municipio--</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <select asp-for="DepartamentoId" class="form-control" asp-items="ViewBag.DepartamentoId" placeholder="Departamento" required>
-                                    <option selected="selected" value="" disabled>--Seleccione un departamento--</option>
-                                </select>
+                            <div class="form-group">
+                                <input asp-for="Observaciones" type="text" class="form-control form-control-user" placeholder="Observaciones">
+                                @*<span asp-validation-for="Observaciones" class="text-danger"></span>*@
                             </div>
-                            <div class="col-sm-4 mb-3 mb-sm-0">
-                                <select asp-for="ProvinciaId" class="form-control" asp-items="ViewBag.ProvinciaId" required>
-                                    <option selected="selected" value="" disabled>--Seleccione la provincia--</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-4">
-                                <select asp-for="MunicipioId" class="form-control form-control-range" asp-items="ViewBag.MunicipioId" placeholder="Municipio" required>
-                                    <option selected="selected" value="" disabled>--Seleccione el municipio--</option>
-                                </select>                               
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="Observaciones" type="text" class="form-control form-control-user" placeholder="Observaciones">
-                            @*<span asp-validation-for="Observaciones" class="text-danger"></span>*@
-                        </div>
 
-                        <div class="form-group">
-                            <input type="submit" value="Crear nuevo proceso" class="btn btn-primary btn-user btn-block" />
-                        </div>
+                            <div class="form-group">
+                                <input type="submit" value="Crear nuevo proceso" class="btn btn-primary btn-user btn-block" />
+                            </div>
 
-                        <hr>
-                        <a asp-action="Index" class="btn btn-google btn-user btn-block">
-                            <i class="fab fa-google fa-fw"></i> Volver a la Lista
-                        </a>
-                        @*<div>
+                            <hr>
+                            <a asp-action="Index" class="btn btn-google btn-user btn-block">
+                                <i class="fab fa-google fa-fw"></i> Volver a la Lista
+                            </a>
+                            @*<div>
                                 <a asp-action="Index">Back to List</a>
                             </div>*@
-                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                            <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                        </a>
-                    </form>
-                    <hr>
-                    <div class="text-center">
-                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                    </div>
-                    <div class="text-center">
-                        <a class="small" href="login.html">Already have an account? Login!</a>
+                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                            </a>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="login.html">Already have an account? Login!</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        @* Tabla *@
+    <div class="card-header py-3 bg-gradient-primary">
+        <h6 class="m-0 font-weight-bold text-white">Lista de procesos</h6>
+        
+        <button style='font-size:24px' class="btn-dark">Button <i class="fas fa-file-excel"></i></button>
+        
+        <div class="col-sm-2 form-group">
+            <input type="submit" value="Crear nuevo proceso" class="btn btn-info btn-user btn-block" />
+        </div>
     </div>
-    @*</div>*@
-</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="bg-gradient-primary text-white">
+                        <tr>
+                            <th>CodPre</th>
+                            <th>Nombre</th>
+                            <th>Superficie</th>                            
+                        </tr>
+                    </thead>
+                    <tfoot class="bg-gradient-primary text-white">
+                        <tr>
+                            <th>CodPre</th>
+                            <th>Nombre</th>
+                            <th>Superficie</th>
+                        </tr>
+                    </tfoot>                    
+                </table>
+            </div>
+        </div>
+        @*</div>*@
+    </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

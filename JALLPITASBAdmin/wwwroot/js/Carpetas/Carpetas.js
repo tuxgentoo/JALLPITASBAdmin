@@ -3,7 +3,7 @@
 $(function () {
     $("#DepartamentoId").change(function () {      
         $('#MunicipioId').html('');    
-        var url = 'GetProvinciabyid';
+        var url = '/Carpetas/GetProvinciabyid';
         var ddlsource = "#DepartamentoId";        
         $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
             var items = '<option selected="selected" value="" disabled>--Seleccione la provincia--</option>';            
@@ -24,7 +24,7 @@ $(function () {
 //<script>
 $(function () {
     $("#ProvinciaId").change(function () {        
-        var url = 'GetMunicipiobyid';
+        var url = '/Carpetas/GetMunicipiobyid';
         var ddlsource = "#ProvinciaId";
         $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
             var items = '<option selected="selected" value="" disabled>--Seleccione el municipio--</option>';
