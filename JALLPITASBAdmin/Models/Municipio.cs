@@ -12,7 +12,7 @@ namespace JALLPITASBAdmin.Models
         public int MunicipioId { get; set; }
         [Required]
         public string Nombre { get; set; }
-        public List<Carpeta> Carpetas { get; set; }
+        public virtual ICollection<Carpeta> Carpetas { get; set; }
         public int ProvinciaId { get; set; }
         public Provincia Provincia { get; set; }
     }

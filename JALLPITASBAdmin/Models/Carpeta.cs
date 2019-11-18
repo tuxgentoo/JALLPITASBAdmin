@@ -31,19 +31,16 @@ namespace JALLPITASBAdmin.Models
         [Required]
         public DateTime FechaRegistro { get; set; }
         public string Observaciones { get; set; }
-        //public List<Predio> Predios { get; set; }
-        [Required]
+        //public List<Predio> Predios { get; set; }        
         [ForeignKey("Departamento")]
         public int DepartamentoId { get; set; }
-        public Departamento Departamento { get; set; }
-        [ForeignKey("Provincia")]
-        [BindRequired]
-        public int? ProvinciaId { get; set; }
-        [Required]
-        public Provincia Provincia { get; set; }
-        //[ForeignKey("Municipio")]
-        //public int? MunicipioId { get; set; }
-        //public Municipio Municipio { get; set; }
+        public virtual Departamento Departamento { get; set; }        
+        [ForeignKey("Provincia")]        
+        public int ProvinciaId { get; set; }
+        public virtual Provincia Provincia { get; set; }
+        [ForeignKey("Municipio")]
+        public int MunicipioId { get; set; }
+        public virtual Municipio Municipio { get; set; }
         //[ForeignKey("ApplicationUser")]
         //public string UserId { get; set; }
         //public ApplicationUser ApplicationUser { get; set; }

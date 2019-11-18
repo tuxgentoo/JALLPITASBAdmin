@@ -15,8 +15,10 @@
                         <th>Cuerpos</th>
                         <th>Fojas</th>
                         <th>Poligono</th>
-                        <th>Fecha</th>
-                        <th>Observaciones</th>
+                        @*<th>Fecha</th>*@
+                        <th>Departamento</th>
+                        <th>Provincia</th>
+                        <th>Municipio</th>
                     </tr>
                 </thead>
                 <tfoot class="bg-gradient-primary text-white">
@@ -26,41 +28,52 @@
                         <th>Cuerpos</th>
                         <th>Fojas</th>
                         <th>Poligono</th>
-                        <th>Fecha</th>
-                        <th>Observaciones</th>
+                        @*<th>Fecha</th>*@
+                        <th>Departamento</th>
+                        <th>Provincia</th>
+                        <th>Municipio</th>
                     </tr>
                 </tfoot>
                 <tbody>                   
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>                                
-                                <a asp-action="Edit" asp-route-id="@item.CarpetaId">@Html.DisplayFor(modelItem => item.IDCarpeta)</a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AgrupacionSocial)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Cuerpos)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Fojas)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Poligono)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FechaRegistro)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Observaciones)
-                            </td>
-                            @*<td>
-                                <a asp-action="Edit" asp-route-id="@item.CarpetaId">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.CarpetaId">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.CarpetaId">Delete</a>
-                            </td>*@
-                        </tr>
+                    <tr>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.CarpetaId">@Html.DisplayFor(modelItem => item.IDCarpeta)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AgrupacionSocial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cuerpos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fojas)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Poligono)
+                        </td>
+                        @*<td>
+            @Html.DisplayFor(modelItem => item.FechaRegistro)
+        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Departamento.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Provincia.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Municipio.Nombre)
+                        </td>
+                        @*<td>
+            @Html.DisplayFor(modelItem => item.Observaciones)
+        </td>*@
+                        @*<td>
+            <a asp-action="Edit" asp-route-id="@item.CarpetaId">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.CarpetaId">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.CarpetaId">Delete</a>
+        </td>*@
+                    </tr>
                     }
                 </tbody>
             </table>

@@ -112,7 +112,10 @@
                         <th>Cuerpos</th>
                         <th>Fojas</th>
                         <th>Poligono</th>
-                        <th>FechaRegistro</th>
+                        @*<th>FechaRegistro</th>*@
+                        <th>Departamento</th>
+                        <th>Provincia</th>
+                        <th>Municipio</th>
                     </tr>
                 </thead>
                 <tfoot class="bg-gradient-primary text-white">
@@ -122,7 +125,10 @@
                         <th>Cuerpos</th>
                         <th>Fojas</th>
                         <th>Poligono</th>
-                        <th>FechaRegistro</th>
+                        @*<th>FechaRegistro</th>*@
+                        <th>Departamento</th>
+                        <th>Provincia</th>
+                        <th>Municipio</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -144,8 +150,17 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Poligono)
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.FechaRegistro)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Departamento.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Provincia.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Municipio.Nombre)
                             </td>
                             @*<td>
                                 @Html.DisplayFor(modelItem => item.Observaciones)

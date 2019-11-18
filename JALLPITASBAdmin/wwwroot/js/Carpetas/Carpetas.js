@@ -1,8 +1,8 @@
 ﻿//Scrip para obtener todas las Provincias segun Departamento
 //<script>
 $(function () {
-    $("#DepartamentoId").change(function () {  
-        //$('#MunicipioId').html("");
+    $("#DepartamentoId").change(function () {      
+        $('#MunicipioId').html('');    
         var url = 'GetProvinciabyid';
         var ddlsource = "#DepartamentoId";        
         $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
@@ -13,7 +13,7 @@ $(function () {
             });
             $("#ProvinciaId").html(items);            
         })
-        //$('#MunicipioId').append('<option selected="selected" value="" disabled>--Seleccione el municipio--</option>');
+        $('#MunicipioId').append('<option selected="selected" value="" disabled>--Seleccione el municipio--</option>');
         $("#ProvinciaId").val("");
         $("#MunicipioId").val("");        
     });

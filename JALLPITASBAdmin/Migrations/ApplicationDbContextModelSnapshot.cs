@@ -3,8 +3,8 @@ using System;
 using JALLPITASBAdmin.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace JALLPITASBAdmin.Migrations
 {
@@ -15,9 +15,9 @@ namespace JALLPITASBAdmin.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("JALLPITASBAdmin.Models.ApplicationRole", b =>
                 {
@@ -41,7 +41,8 @@ namespace JALLPITASBAdmin.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex");
+                        .HasName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -103,7 +104,8 @@ namespace JALLPITASBAdmin.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex");
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -111,7 +113,8 @@ namespace JALLPITASBAdmin.Migrations
             modelBuilder.Entity("JALLPITASBAdmin.Models.Carpeta", b =>
                 {
                     b.Property<int>("CarpetaId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AgrupacionSocial")
                         .IsRequired();
@@ -126,7 +129,7 @@ namespace JALLPITASBAdmin.Migrations
 
                     b.Property<long>("IDCarpeta");
 
-                    b.Property<int?>("MunicipioId");
+                    b.Property<int>("MunicipioId");
 
                     b.Property<string>("Observaciones");
 
@@ -148,7 +151,8 @@ namespace JALLPITASBAdmin.Migrations
             modelBuilder.Entity("JALLPITASBAdmin.Models.Departamento", b =>
                 {
                     b.Property<int>("DepartamentoId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Nombre")
                         .IsRequired();
@@ -161,7 +165,8 @@ namespace JALLPITASBAdmin.Migrations
             modelBuilder.Entity("JALLPITASBAdmin.Models.Municipio", b =>
                 {
                     b.Property<int>("MunicipioId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Nombre")
                         .IsRequired();
@@ -178,7 +183,8 @@ namespace JALLPITASBAdmin.Migrations
             modelBuilder.Entity("JALLPITASBAdmin.Models.Provincia", b =>
                 {
                     b.Property<int>("ProvinciaId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DepartamentoId");
 
@@ -195,7 +201,8 @@ namespace JALLPITASBAdmin.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType");
 
@@ -214,7 +221,8 @@ namespace JALLPITASBAdmin.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType");
 
@@ -285,16 +293,17 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasOne("JALLPITASBAdmin.Models.Departamento", "Departamento")
                         .WithMany("Carpetas")
                         .HasForeignKey("DepartamentoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("JALLPITASBAdmin.Models.Municipio")
+                    b.HasOne("JALLPITASBAdmin.Models.Municipio", "Municipio")
                         .WithMany("Carpetas")
-                        .HasForeignKey("MunicipioId");
+                        .HasForeignKey("MunicipioId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("JALLPITASBAdmin.Models.Provincia", "Provincia")
                         .WithMany("Carpetas")
                         .HasForeignKey("ProvinciaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("JALLPITASBAdmin.Models.Municipio", b =>
@@ -302,7 +311,7 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasOne("JALLPITASBAdmin.Models.Provincia", "Provincia")
                         .WithMany("Municipios")
                         .HasForeignKey("ProvinciaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("JALLPITASBAdmin.Models.Provincia", b =>
@@ -310,7 +319,7 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasOne("JALLPITASBAdmin.Models.Departamento", "Departamento")
                         .WithMany("Provincias")
                         .HasForeignKey("DepartamentoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -318,7 +327,7 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasOne("JALLPITASBAdmin.Models.ApplicationRole")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -326,7 +335,7 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasOne("JALLPITASBAdmin.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -334,7 +343,7 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasOne("JALLPITASBAdmin.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -342,12 +351,12 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasOne("JALLPITASBAdmin.Models.ApplicationRole")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("JALLPITASBAdmin.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -355,7 +364,7 @@ namespace JALLPITASBAdmin.Migrations
                     b.HasOne("JALLPITASBAdmin.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

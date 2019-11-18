@@ -22,7 +22,7 @@ namespace JALLPITASBAdmin.Controllers
         // GET: Carpetas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Carpetas.ToListAsync());
+            return View(await _context.Carpetas.Include(d => d.Departamento).Include(p => p.Provincia).Include(m => m.Municipio).ToListAsync());
         }
 
         // GET: Carpetas/Details/5
@@ -55,12 +55,9 @@ namespace JALLPITASBAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CarpetaId,IDCarpeta,DepartamentoId,ProvinciaId,AgrupacionSocial,Cuerpos,Fojas,Poligono,Observaciones")] Carpeta carpeta)
+        public async Task<IActionResult> Create([Bind("CarpetaId,IDCarpeta,DepartamentoId,ProvinciaId,MunicipioId,AgrupacionSocial,Cuerpos,Fojas,Poligono,Observaciones")] Carpeta carpeta)
         {
-            var errors = ModelState
-    .Where(x => x.Value.Errors.Count > 0)
-    .Select(x => new { x.Key, x.Value.Errors })
-    .ToArray();
+            //var errors = ModelState.Where(x => x.Value.Errors.Count > 0).Select(x => new { x.Key, x.Value.Errors }).ToArray();
                         
             if (ModelState.IsValid)
             {
@@ -81,6 +78,9 @@ namespace JALLPITASBAdmin.Controllers
             }
 
             var carpeta = await _context.Carpetas.FindAsync(id);
+            ViewData["DepartamentoId"] = new SelectList(_context.Departamentos, "DepartamentoId", "Nombre");
+            ViewData["ProvinciaId"] = new SelectList(_context.Provincias.Where(c => c.DepartamentoId == carpeta.DepartamentoId).ToList(), "ProvinciaId", "Nombre");
+            ViewData["MunicipioId"] = new SelectList(_context.Municipios.Where(c => c.ProvinciaId == carpeta.ProvinciaId).ToList(), "MunicipioId", "Nombre");
             if (carpeta == null)
             {
                 return NotFound();
@@ -93,8 +93,9 @@ namespace JALLPITASBAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CarpetaId,IDCarpeta,AgrupacionSocial,Cuerpos,Fojas,Poligono,FechaRegistro,Observaciones")] Carpeta carpeta)
+        public async Task<IActionResult> Edit(int id, [Bind("CarpetaId,IDCarpeta,AgrupacionSocial,Cuerpos,Fojas,Poligono,FechaRegistro,Observaciones,DepartamentoId,ProvinciaId,MunicipioId")] Carpeta carpeta)
         {
+            //var errors = ModelState.Where(x => x.Value.Errors.Count > 0).Select(x => new { x.Key, x.Value.Errors }).ToArray();
             if (id != carpeta.CarpetaId)
             {
                 return NotFound();

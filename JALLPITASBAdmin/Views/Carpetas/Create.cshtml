@@ -57,12 +57,11 @@
                                     <option selected="selected" value="" disabled>--Seleccione la provincia--</option>
                                 </select>
                             </div>
-                            @*<div class="col-sm-4">
-            <select asp-for="MunicipioId" class="form-control form-control-range" asp-items="ViewBag.MunicipioId" placeholder="Municipio" required>
-                <option selected="selected" value="" disabled>--Seleccione el municipio--</option>
-            </select>
-            <span asp-validation-for="Poligono" class="text-danger"></span>
-        </div>*@
+                            <div class="col-sm-4">
+                                <select asp-for="MunicipioId" class="form-control form-control-range" asp-items="ViewBag.MunicipioId" placeholder="Municipio" required>
+                                    <option selected="selected" value="" disabled>--Seleccione el municipio--</option>
+                                </select>                               
+                            </div>
                         </div>
                         <div class="form-group">
                             <input asp-for="Observaciones" type="text" class="form-control form-control-user" placeholder="Observaciones">
