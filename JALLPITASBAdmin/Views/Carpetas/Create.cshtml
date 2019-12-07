@@ -95,23 +95,21 @@
             </div>
         </div>
         @* Tabla *@
-    <div class="card-header py-3 bg-gradient-primary">
-        <h6 class="m-0 font-weight-bold text-white">Lista de procesos</h6>
         
-        <button style='font-size:24px' class="btn-dark">Button <i class="fas fa-file-excel"></i></button>
-        
-        <div class="col-sm-2 form-group">
-            <input type="submit" value="Crear nuevo proceso" class="btn btn-info btn-user btn-block" />
+       
+        <div class="card-header py-3 bg-gradient-primary">
+            <h6 class="m-0 font-weight-bold text-white">Lista de procesos</h6>            
         </div>
-    </div>
         <div class="card-body">
+            <button style='font-size:24px' class="btn col-1 btn-outline-danger"><i class="fas fa-file-excel"></i></button>
+            <button style='font-size:24px' class="btn col-1 btn-outline-info"><i class="fas fa-file-excel"></i></button>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead class="bg-gradient-primary text-white">
                         <tr>
                             <th>CodPre</th>
                             <th>Nombre</th>
-                            <th>Superficie</th>                            
+                            <th>Superficie</th>
                         </tr>
                     </thead>
                     <tfoot class="bg-gradient-primary text-white">
@@ -120,7 +118,7 @@
                             <th>Nombre</th>
                             <th>Superficie</th>
                         </tr>
-                    </tfoot>                    
+                    </tfoot>
                 </table>
             </div>
         </div>
