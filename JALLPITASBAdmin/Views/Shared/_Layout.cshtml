@@ -70,9 +70,24 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Componentes:</h6>
                         @*<a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>*@
-                        <a class="collapse-item" asp-area="" asp-controller="Home" asp-action="Index">Lista</a>
-                        <a class="collapse-item" asp-area="" asp-controller="Carpetas" asp-action="Create">Crear</a>
+                    <a class="collapse-item" href="cards.html">Cards</a>*@
+                        <a class="collapse-item" asp-area="" asp-controller="Home" asp-action="Index">Listar</a>
+                        <a class="collapse-item" asp-area="" asp-controller="Carpetas" asp-action="Create">Registrar</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRegistriVisitas" aria-expanded="true" aria-controls="collapseRegistriVisitas">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Registro de Visitas</span>
+                </a>
+                <div id="collapseRegistriVisitas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Componentes:</h6>
+                        @*<a class="collapse-item" href="buttons.html">Buttons</a>
+                    <a class="collapse-item" href="cards.html">Cards</a>*@
+                        <a class="collapse-item" asp-area="" asp-controller="RegistroVisitas" asp-action="Index">Listar</a>
+                        <a class="collapse-item" asp-area="" asp-controller="RegistroVisitas" asp-action="Create">Registrar</a>
                     </div>
                 </div>
             </li>

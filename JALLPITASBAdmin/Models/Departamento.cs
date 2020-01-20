@@ -14,5 +14,6 @@ namespace JALLPITASBAdmin.Models
         public string Nombre { get; set; }
         public virtual ICollection<Carpeta> Carpetas { get; set; }
         public virtual ICollection<Provincia> Provincias { get; set; }
+        public virtual ICollection<RegistroVisita> RegistroVisitas { get; set; }
     }
 }

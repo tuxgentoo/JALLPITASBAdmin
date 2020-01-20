@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace JALLPITASBAdmin.Models
 {
-    public class PlanillaRegistro
+    public class RegistroVisita
     {
-        public int PlanillaRegistroId { get; set; }
+        public int RegistroVisitaId { get; set; }
         public string Nombre { get; set; }
         public int Ci { get; set; }
         public int Celular { get; set; }
@@ -16,8 +16,8 @@ namespace JALLPITASBAdmin.Models
         [ForeignKey("Departamento")]
         public int DepartamentoId { get; set; }
         public virtual Departamento Departamento { get; set; }        
-        public string Proceso { get; set; }
+        public string NombreProceso { get; set; }
         public string Observacion { get; set; }
-        public DateTime Fecha { get; set; }
+        public DateTime FechaVisita { get; set; }
     }
 }
