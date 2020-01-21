@@ -57,11 +57,12 @@ namespace JALLPITASBAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RegistroVisitaId,Nombre,Ci,Celular,TipoPersona,DepartamentoId,NombreProceso,Observacion,FechaVisita")] RegistroVisita registroVisita)
+        public async Task<IActionResult> Create([Bind("RegistroVisitaId,Nombre,Ci,Celular,TipoPersona,DepartamentoId,NombreProceso,Observacion")] RegistroVisita registroVisita)
         {
+            registroVisita.FechaVisita = DateTime.Now;
             if (ModelState.IsValid)
             {
-                _context.Add(registroVisita);
+                _context.Add(registroVisita);                
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

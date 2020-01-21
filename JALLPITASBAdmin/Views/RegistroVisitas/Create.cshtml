@@ -14,49 +14,42 @@
         <div class="row">
             @*<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>*@
             <div class="col-lg-12">
-                <div class="p-5">
-                    @*<div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                        </div>*@
+                <div class="p-5">                    
                     <form class="user needs-validation" novalidate asp-action="Create">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input asp-for="Nombre" type="number" class="form-control form-control-user" placeholder="ID Carpeta" required>
-                                @*<span asp-validation-for="IDCarpeta" class="text-danger"></span>*@
-                                @*<div class="invalid-tooltip">
-                                        Looks good!
-                                    </div>*@
+                                <input asp-for="Ci" type="number" class="form-control form-control-user" placeholder="Carnet de identidad" required>                                
                             </div>
                         </div>
                         <div class="form-group">
-                            <input asp-for="Ci" type="text" class="form-control form-control-user" placeholder="Agrupacion Social" required>
+                            <input asp-for="Nombre" type="text" class="form-control form-control-user" placeholder="Nombre" required>
                             @*<span asp-validation-for="AgrupacionSocial" class="text-danger"></span>*@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-4">
-                                <input asp-for="Celular" type="number" class="form-control form-control-user" placeholder="Cuerpos" required>
+                                <input asp-for="Celular" type="number" class="form-control form-control-user" placeholder="Celular" required>
                                 @*<span asp-validation-for="Cuerpos" class="text-danger"></span>*@
                             </div>
-                            <div class="col-sm-4 mb-3 mb-sm-0">
-                                <input asp-for="TipoPersona" type="number" class="form-control form-control-user" placeholder="Fojas" required>
-                                @*<span asp-validation-for="Fojas" class="text-danger"></span>*@
+                            <div class="col-sm-4 mb-3 mb-sm-0">                                
+                                <select asp-for="TipoPersona" id="testSelect" class="form-control" placeholder="Departamento" runat="server" ClientIDMode="Static" required>
+                                    <option selected="selected" value="" disabled>--Seleccione el tipo de persona--</option>
+                                    <option value="TITULAR">TITULAR</option>
+                                    <option value="APODERADO">APODERADO</option>
+                                </select>
                             </div>
-                            <div class="col-sm-4">
-                                <input asp-for="NombreProceso" type="number" class="form-control form-control-user" placeholder="Poligono" required>
-                                @*<span asp-validation-for="Poligono" class="text-danger"></span>*@
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <div class="col-sm-4">
                                 <select asp-for="DepartamentoId" class="form-control" asp-items="ViewBag.DepartamentoId" placeholder="Departamento" required>
                                     <option selected="selected" value="" disabled>--Seleccione un departamento--</option>
                                 </select>
                             </div>
-                            <div class="col-sm-4 mb-3 mb-sm-0">
-                                <select asp-for="Observacion" class="form-control" asp-items="ViewBag.ProvinciaId" required>
-                                    <option selected="selected" value="" disabled>--Seleccione la provincia--</option>
-                                </select>
-                            </div>                            
+                        </div>                        
+                        <div class="form-group">
+                            <input asp-for="NombreProceso" type="text" class="form-control form-control-user" placeholder="Nombre del proceso" required>
+                            @*<span asp-validation-for="AgrupacionSocial" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Observacion" type="text" class="form-control form-control-user" placeholder="Observaciones">
+                            @*<span asp-validation-for="AgrupacionSocial" class="text-danger"></span>*@
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Crear nuevo proceso" class="btn btn-primary btn-user btn-block" />
@@ -67,8 +60,8 @@
                             <i class="fab fa-google fa-fw"></i> Volver a la Lista
                         </a>
                         @*<div>
-                                <a asp-action="Index">Back to List</a>
-                            </div>*@
+            <a asp-action="Index">Back to List</a>
+        </div>*@
                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                             <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                         </a>
@@ -85,9 +78,9 @@
         </div>
     </div>    
 </div>
-@section Scripts {
+@*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -111,67 +104,6 @@
         }, false);
     })();
 </script>
-
-
-
-<h1>Create</h1>
-
-<h4>RegistroVisita</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ci" class="control-label"></label>
-                <input asp-for="Ci" class="form-control" />
-                <span asp-validation-for="Ci" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Celular" class="control-label"></label>
-                <input asp-for="Celular" class="form-control" />
-                <span asp-validation-for="Celular" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TipoPersona" class="control-label"></label>
-                <input asp-for="TipoPersona" class="form-control" />
-                <span asp-validation-for="TipoPersona" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DepartamentoId" class="control-label"></label>
-                <select asp-for="DepartamentoId" class="form-control" asp-items="ViewBag.DepartamentoId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="NombreProceso" class="control-label"></label>
-                <input asp-for="NombreProceso" class="form-control" />
-                <span asp-validation-for="NombreProceso" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Observacion" class="control-label"></label>
-                <input asp-for="Observacion" class="form-control" />
-                <span asp-validation-for="Observacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaVisita" class="control-label"></label>
-                <input asp-for="FechaVisita" class="form-control" />
-                <span asp-validation-for="FechaVisita" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

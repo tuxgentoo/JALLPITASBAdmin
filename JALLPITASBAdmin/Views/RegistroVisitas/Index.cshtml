@@ -1,77 +1,58 @@
 ﻿@model IEnumerable<JALLPITASBAdmin.Models.RegistroVisita>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ci)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Celular)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoPersona)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Departamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreProceso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaVisita)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ci)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Celular)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoPersona)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Departamento.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreProceso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaVisita)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RegistroVisitaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RegistroVisitaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RegistroVisitaId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-gradient-primary">
+        <h6 class="m-0 font-weight-bold text-white">Lista de visitas</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead class="bg-gradient-primary text-white">
+                    <tr>
+                        <th>Ci</th>
+                        <th>Nombre</th>
+                        <th>Celular</th>
+                        <th>Persona</th>
+                        <th>Departamento</th>
+                        <th>Proceso</th>
+                    </tr>
+                </thead>
+                <tfoot class="bg-gradient-primary text-white">
+                    <tr>
+                        <th>Ci</th>
+                        <th>Nombre</th>
+                        <th>Celular</th>
+                        <th>Persona</th>
+                        <th>Departamento</th>
+                        <th>Proceso</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Ci">@Html.DisplayFor(modelItem => item.Ci)</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Celular)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TipoPersona)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Departamento.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NombreProceso)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

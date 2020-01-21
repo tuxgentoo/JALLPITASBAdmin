@@ -12,7 +12,7 @@ namespace JALLPITASBAdmin.Models
         public string Nombre { get; set; }
         public int Ci { get; set; }
         public int Celular { get; set; }
-        public int TipoPersona { get; set; }
+        public string TipoPersona { get; set; }
         [ForeignKey("Departamento")]
         public int DepartamentoId { get; set; }
         public virtual Departamento Departamento { get; set; }        
