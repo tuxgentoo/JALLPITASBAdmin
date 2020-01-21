@@ -15,6 +15,7 @@
                         <th>Persona</th>
                         <th>Departamento</th>
                         <th>Proceso</th>
+                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tfoot class="bg-gradient-primary text-white">
@@ -25,31 +26,37 @@
                         <th>Persona</th>
                         <th>Departamento</th>
                         <th>Proceso</th>
+                        <th>Fecha</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Ci">@Html.DisplayFor(modelItem => item.Ci)</a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Celular)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TipoPersona)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Departamento.Nombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NombreProceso)
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.RegistroVisitaId">@Html.DisplayFor(modelItem => item.Ci)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Celular)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoPersona)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Departamento.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreProceso)
+                        </td>
+                        <td>
+                            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.FechaVisita))
+                            @*@Html.DisplayFor(modelItem => item.FechaVisita)*@
+
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
