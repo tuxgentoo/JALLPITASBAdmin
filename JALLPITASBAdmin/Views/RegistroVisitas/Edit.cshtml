@@ -6,19 +6,14 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3 bg-gradient-primary">
-        <h6 class="m-0 font-weight-bold text-white">Registro de procesos</h6>
+        <h6 class="m-0 font-weight-bold text-white">Registro de visitas</h6>
     </div>
 
     <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-            @*<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>*@
             <div class="col-lg-12">
                 <div class="p-5">
-                    @*<div class="text-center">
-
-                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                        </div>*@
                     <form class="user needs-validation" novalidate asp-action="Edit">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="RegistroVisitaId" />
@@ -29,12 +24,10 @@
                         </div>
                         <div class="form-group">
                             <input asp-for="Nombre" type="text" class="form-control form-control-user" placeholder="Nombre" required>
-                            @*<span asp-validation-for="AgrupacionSocial" class="text-danger"></span>*@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <input asp-for="Celular" type="number" class="form-control form-control-user" placeholder="Celular" required>
-                                @*<span asp-validation-for="Cuerpos" class="text-danger"></span>*@
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0">
                                 <select asp-for="TipoPersona" id="testSelect" class="form-control" placeholder="Departamento" runat="server" ClientIDMode="Static" required>
@@ -51,24 +44,17 @@
                         </div>
                         <div class="form-group">
                             <input asp-for="NombreProceso" type="text" class="form-control form-control-user" placeholder="Nombre del proceso" required>
-                            @*<span asp-validation-for="AgrupacionSocial" class="text-danger"></span>*@
                         </div>
                         <div class="form-group">
                             <input asp-for="Observacion" type="text" class="form-control form-control-user" placeholder="Observaciones">
-                            @*<span asp-validation-for="AgrupacionSocial" class="text-danger"></span>*@
                         </div>
-
                         <div class="form-group">
-                            <input type="submit" value="Crear nuevo proceso" class="btn btn-primary btn-user btn-block" />
+                            <input type="submit" value="Actualizar" class="btn btn-primary btn-user btn-block" />
                         </div>
-
                         <hr>
                         <a asp-action="Index" class="btn btn-google btn-user btn-block">
                             <i class="fab fa-google fa-fw"></i> Volver a la Lista
                         </a>
-                        @*<div>
-            <a asp-action="Index">Back to List</a>
-        </div>*@
                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                             <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                         </a>
@@ -84,7 +70,6 @@
             </div>
         </div>
     </div>
-    @*</div>*@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -111,66 +96,6 @@
     })();
 </script>
 <script src="~/js/Carpetas/Carpetas.js"></script>
-
-<h1>Edit</h1>
-
-<h4>RegistroVisita</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="RegistroVisitaId" />
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ci" class="control-label"></label>
-                <input asp-for="Ci" class="form-control" />
-                <span asp-validation-for="Ci" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Celular" class="control-label"></label>
-                <input asp-for="Celular" class="form-control" />
-                <span asp-validation-for="Celular" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TipoPersona" class="control-label"></label>
-                <input asp-for="TipoPersona" class="form-control" />
-                <span asp-validation-for="TipoPersona" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DepartamentoId" class="control-label"></label>
-                <select asp-for="DepartamentoId" class="form-control" asp-items="ViewBag.DepartamentoId"></select>
-                <span asp-validation-for="DepartamentoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NombreProceso" class="control-label"></label>
-                <input asp-for="NombreProceso" class="form-control" />
-                <span asp-validation-for="NombreProceso" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Observacion" class="control-label"></label>
-                <input asp-for="Observacion" class="form-control" />
-                <span asp-validation-for="Observacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaVisita" class="control-label"></label>
-                <input asp-for="FechaVisita" class="form-control" />
-                <span asp-validation-for="FechaVisita" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
